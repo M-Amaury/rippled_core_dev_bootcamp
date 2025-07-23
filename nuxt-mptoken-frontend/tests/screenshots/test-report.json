@@ -1,0 +1,51 @@
+{
+  "timestamp": "2025-07-10T15:25:59.762Z",
+  "config": {
+    "baseUrl": "http://localhost:3001",
+    "rippleDUrl": "ws://localhost:6006",
+    "browser": "headed"
+  },
+  "results": [
+    {
+      "test": "Home Page Load",
+      "status": "FAILED",
+      "details": "Invalid page title: ",
+      "timestamp": "2025-07-10T15:25:59.197Z"
+    },
+    {
+      "test": "XRPL Connection",
+      "status": "FAILED",
+      "details": "SyntaxError: Failed to execute 'querySelector' on 'Document': 'button:has-text(\"Connect\"), button[class*=\"connect\"]' is not a valid selector.",
+      "timestamp": "2025-07-10T15:25:59.351Z"
+    },
+    {
+      "test": "Account Generation",
+      "status": "FAILED",
+      "details": "SyntaxError: Failed to execute 'querySelector' on 'Document': 'button:has-text(\"Generate\"), button[class*=\"generate\"]' is not a valid selector.",
+      "timestamp": "2025-07-10T15:25:59.467Z"
+    },
+    {
+      "test": "Tab Navigation",
+      "status": "PASSED",
+      "details": "Tested 6 tabs",
+      "timestamp": "2025-07-10T15:25:59.583Z"
+    },
+    {
+      "test": "Form Inputs",
+      "status": "FAILED",
+      "details": "No element found for selector: [data-tab=\"create\"]",
+      "timestamp": "2025-07-10T15:25:59.699Z"
+    },
+    {
+      "test": "Responsive Design",
+      "status": "FAILED",
+      "details": "this.page.waitForTimeout is not a function",
+      "timestamp": "2025-07-10T15:25:59.762Z"
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "passed": 1,
+    "failed": 5
+  }
+}

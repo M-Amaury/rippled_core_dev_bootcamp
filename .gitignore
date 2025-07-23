@@ -1,0 +1,91 @@
+# Build directories
+build/
+.build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+install_manifest.txt
+CTestTestfile.cmake
+Testing/
+
+# Conan files
+conandata.yml
+conaninfo.txt
+conanbuildinfo.*
+conan.lock
+*.pyc
+__pycache__/
+
+# CMake generated files
+CMakeUserPresets.json
+compile_commands.json
+
+# Cache directories
+.cache/
+
+# Compiled Object files
+*.o
+*.obj
+*.lo
+*.slo
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.a
+*.la
+*.lai
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+rippled
+
+# Coverage files
+*.gcda
+*.gcno
+*.gcov
+coverage/
+*.info
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+*.user
+
+# Temporary files
+*.tmp
+*.temp
+*~
+.#*
+
+# Log files
+*.log
+
+# Documentation build
+docs/html/
+docs/latex/
+
+# Node.js
+node_modules/
+npm-debug.log
+
+# Dependency directories
+vcpkg/ 
+
+CLAUDE.md
+package-lock.json
+package.json
