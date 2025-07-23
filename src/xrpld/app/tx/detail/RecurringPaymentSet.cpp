@@ -17,10 +17,8 @@
 */
 //==============================================================================
 
-#ifndef RIPPLE_TX_PAYMENT_H_INCLUDED
-#define RIPPLE_TX_PAYMENT_H_INCLUDED
-
 #include <xrpld/app/tx/detail/RecurringPaymentSet.h>
+#include <xrpld/app/ledger/Ledger.h>
 #include <xrpld/core/Config.h>
 #include <xrpld/ledger/View.h>
 
@@ -51,5 +49,3 @@ RecurringPaymentSet::doApply(){
 }
 
 } // namespace ripple
-
-#endif

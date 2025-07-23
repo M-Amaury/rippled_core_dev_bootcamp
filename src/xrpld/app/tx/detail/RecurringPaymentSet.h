@@ -17,8 +17,8 @@
 */
 //==============================================================================
 
-#ifndef RIPPLE_TX_PAYMENT_H_INCLUDED
-#define RIPPLE_TX_PAYMENT_H_INCLUDED
+#ifndef RIPPLE_TX_RECURRINGPAYMENTSET_H_INCLUDED
+#define RIPPLE_TX_RECURRINGPAYMENTSET_H_INCLUDED
 
 #include <xrpld/app/tx/detail/Transactor.h>
 #include <xrpl/protocol/TxFlags.h>

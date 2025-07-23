@@ -523,7 +523,7 @@ TRANSACTION(ttBATCH, 71, Batch, Delegation::notDelegatable, ({
 }))
 
 /** This transaction type reccuring_payment. */
-TRANSACTION(ttRECURRING_PAYMENT_SET, 72, ReccuringPaymentSet, Delegation::delegatable, ({
+TRANSACTION(ttRECURRING_PAYMENT_SET, 72, RecurringPaymentSet, Delegation::delegatable, ({
     {sfDestination, soeOPTIONAL},
     {sfDestinationTag, soeOPTIONAL},
     {sfAmount,         soeREQUIRED},

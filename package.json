@@ -1,0 +1,40 @@
+{
+  "name": "rippled-auto-tools",
+  "version": "1.0.0",
+  "description": "Automated tools for XRPL rippled testing and block acceptance",
+  "main": "auto-accept-blocks.js",
+  "scripts": {
+    "start": "node auto-accept-blocks.js",
+    "start:verbose": "node auto-accept-blocks.js --verbose",
+    "start:fund": "node auto-accept-blocks.js --auto-fund --verbose",
+    "advance": "node advance-ledger.js",
+    "advance:verbose": "node advance-ledger.js --verbose",
+    "advance:manual": "node advance-ledger.js --manual-close --verbose",
+    "advance:fast": "node advance-ledger.js --interval 5000 --verbose",
+    "close": "node close-ledger.js",
+    "auto-advance": "node auto-advance.js",
+    "test": "node test-connection.js",
+    "frontend": "cd nuxt-mptoken-frontend && npm run dev",
+    "test-frontend": "cd nuxt-mptoken-frontend && npm run test",
+    "build-frontend": "cd nuxt-mptoken-frontend && npm run build"
+  },
+  "keywords": [
+    "xrpl",
+    "rippled",
+    "blockchain",
+    "automation",
+    "testing"
+  ],
+  "author": "XRPL Developer",
+  "license": "MIT",
+  "dependencies": {
+    "xrpl": "^4.3.0",
+    "commander": "^11.1.0"
+  },
+  "devDependencies": {
+    "puppeteer": "^21.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
