@@ -17,9 +17,10 @@
 */
 //==============================================================================
 
-#include <xrpld/app/tx/detail/RecurringPaymentSet.h>
+
 #include <xrpld/app/ledger/Ledger.h>
-#include <xrpld/core/Config.h>
+#include <xrpld/app/tx/detail/RecurringPaymentSet.h>
+#include <xrpld/ledger/ApplyView.h>
 #include <xrpld/ledger/View.h>
 
 #include <xrpl/basics/Log.h>
@@ -30,7 +31,48 @@ namespace ripple {
 
 NotTEC
 RecurringPaymentSet::preflight(PreflightContext const& ctx){
-    return tesSUCCESS;
+    if (auto const ret = preflight1(ctx); !isTesSuccess(ret)){
+        return ret;
+    }
+
+    std::uint32_t const txFlags = ctx.tx.getFlags();
+    if(txFlags & tfUniversalMask){
+        JLOG(ctx.j.error()) << "RecurringPaymentSet: Invalid flags set";
+        return temINVALID_FLAG;
+    }
+
+    if(ctx.tx[sfAccount] == ctx.tx[sfDestination]){
+        JLOG(ctx.j.error()) << "RecurringPaymentSet: Account and Destination cannot be the same";
+        return temREDUNDANT;
+    }
+
+    if(!ctx.tx.isFieldPresent(sfDestination)){
+        if(!ctx.tx.isFieldPresent(sfPublicKey)){
+            JLOG(ctx.j.error()) << "RecurringPaymentSet: Publickey is required when distination is omited";
+            return temMALFORMED;
+        }
+        if(ctx.tx.getFieldVL(sfPublicKey) != ctx.tx.getFieldVL(sfSigningPubKey) ){
+            JLOG(ctx.j.error()) << "RecurringPaymentSet: Publickey and SigningPubKey must match";
+            return temMALFORMED;
+        }
+    }
+
+    if(!ctx.tx.isFieldPresent(sfAmount) || ctx.tx.getFieldAmount(sfAmount).signum() <= 0){
+        JLOG(ctx.j.error()) << "RecurringPaymentSet: Amount must be there and greater than 0";
+        return temBAD_AMOUNT;
+    }
+
+    // auto const SYSTEM_MINIMUM = std::chrono::seconds(2592000);
+    // if(!ctx.tx.isFieldPresent(sfFrequency) || ctx.tx.getFieldU64(sfFrequency) <= SYSTEM_MINIMUM){
+    //     JLOG(ctx.j.error()) << "RecurringPaymentSet: Frequency must be there and greater than 0";
+    //     return temMALFORMED;
+    // }
+
+    // if(ctx.tx.isFieldPresent(sfExpiration) && ctx.tx.getFieldU32(sfExpiration) <= ctx.tx.getBlockTime()){
+    //     JLOG(ctx.j.debug()) << "RecurringPaymentSet: Expiration must be greater than current time";
+    //     return temBAD_EXPIRATION;
+    // }
+    return preflight2(ctx);
 }
 
 TER
